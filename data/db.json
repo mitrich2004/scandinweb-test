@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "SKU": "CHR12405",
+      "name": "Chair",
+      "price": "15",
+      "size": null,
+      "weight": null,
+      "height": "70",
+      "width": "40",
+      "length": "40",
+      "id": 1
+    },
+    {
+      "SKU": "DCK56432",
+      "name": "DockHub",
+      "price": "20",
+      "size": "100000",
+      "weight": null,
+      "height": null,
+      "width": null,
+      "length": null,
+      "id": 2
+    },
+    {
+      "SKU": "BCK78345",
+      "name": "Gone WIth The Wind",
+      "price": "10",
+      "size": null,
+      "weight": "1",
+      "height": null,
+      "width": null,
+      "length": null,
+      "id": 3
+    },
+    {
+      "SKU": "DCK56432",
+      "name": "DockHub",
+      "price": "20",
+      "size": "100000",
+      "weight": null,
+      "height": null,
+      "width": null,
+      "length": null,
+      "id": 5
+    },
+    {
+      "SKU": "BCK78345",
+      "name": "Gone WIth The Wind",
+      "price": "10",
+      "size": null,
+      "weight": "1",
+      "height": null,
+      "width": null,
+      "length": null,
+      "id": 6
+    }
+  ]
+}

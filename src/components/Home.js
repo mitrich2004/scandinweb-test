@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import HomeNavbar from './HomeNavbar';
@@ -8,24 +9,26 @@ const Home = () => {
 
     const handleDelete = () => { 
         checkedProducts.forEach(id => {
-            fetch('http://localhost:8000/products/' + id, { method: 'DELETE' }).then(() => {
+            axios.post('https://juniortest-siarhei-miachkou-api.000webhostapp.com/' + id).then((response) => {
+                console.log(response.data);
                 setCheckedProducts([]);
+            })
+            .catch(err => {
+                console.log(err);
             });
         })
     }
 
     useEffect(() => {
-        fetch('http://localhost:8000/products')
-        .then(res => {
-            if (!res.ok)
+        axios.get('https://juniortest-siarhei-miachkou-api.000webhostapp.com/').then(function(response) {
+            if (response.data.status === 1)
             {
-                throw Error("could not fetch data");
+                setProducts(response.data.data);
             }
-
-            return res.json();
-        })
-        .then(data => {
-            setProducts(data);
+            else
+            {
+                console.log(response.data.err);
+            }
         });
     }, [checkedProducts]);
 

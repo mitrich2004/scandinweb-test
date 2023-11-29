@@ -89,6 +89,14 @@ a {
   display: block;
 }
 
+.create .errorText {
+  text-align: left;
+  color: red;
+  font-size: 14px;
+  display: block;
+  padding-top: 5px;
+}
+
 .footer {
   padding: 20px;
   display: flex;

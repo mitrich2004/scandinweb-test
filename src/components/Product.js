@@ -16,7 +16,7 @@ const Product = ({product, checkedProducts, setCheckedProducts}) => {
     return ( 
         <div className="product">
             <input className="delete-checkbox" type="checkbox" onClick={(e) => handleClick(e.target.checked)}></input>
-            <p>{ product.SKU }</p>
+            <p>{ product.sku }</p>
             <p>{ product.name }</p>
             <p>{ product.price + '$' }</p>
             {product.size && <p>{ 'Size: ' + product.size +'MB' }</p>}

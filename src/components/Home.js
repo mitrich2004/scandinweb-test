@@ -54,7 +54,7 @@ const Home = () => {
             setError(error.message);
             toast.error(error.message);
         })
-    }, [checkedProducts]);
+    }, [checkedProducts, history]);
 
     return ( 
         <div>

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
     const productTypeMapper = new Map([
@@ -24,7 +26,6 @@ const Form = () => {
 
     //errors
     const [skuErrorStatus, setSkuErrorStatus] = useState(false);
-    const [skuErrorMessage, setSkuErrorMessage] = useState("SKU must contain symbols");
     const [nameErrorStatus, setNameErrorStatus] = useState(false);
     const [priceErrorStatus, setPriceErrorStatus] = useState(false);
     const [sizeErrorStatus, setSizeErrorStatus] = useState(false);
@@ -97,19 +98,22 @@ const Form = () => {
         {
             if (response.data.status === 1)
             {
-                history.push('/');
-                console.log(response.data);
+                history.push({
+                    pathname: '/',
+                    state: 'addedProduct'
+                });
             }
             else
             {
-                console.log(response.data.err);
+                toast.error(response.data.msg);
                 if (response.data.err.includes("Duplicate entry"))
                 {
-                    setSkuErrorStatus(true); 
-                    setSku(""); 
-                    setSkuErrorMessage("SKU must be unique");
+                    toast.error("SKU must be unique");
                 }
             }
+        })
+        .catch(error => {
+            toast.error(error.message);
         });
     }
 
@@ -119,7 +123,6 @@ const Form = () => {
         if (product.sku.trim().length === 0)
         {
             setSkuErrorStatus(true); setSku("");
-            setSkuErrorMessage("SKU must contain symbols");
             dataIsOkay = false;
         }
 
@@ -175,7 +178,7 @@ const Form = () => {
         <div className="create">
             <form id="product_form" onSubmit={handleSubmit}>
                 <label>SKU</label>
-                {skuErrorStatus && <p className="errorText">{skuErrorMessage}</p>}
+                {skuErrorStatus && <p className="errorText">SKU must contain symbols</p>}
                 <input 
                     placeholder="Enter product's SKU..."
                     id="sku"
@@ -278,8 +281,11 @@ const Form = () => {
                         onChange={(e) => setLength(e.target.value)}
                     />
                 </div>}
-
             </form>
+            <ToastContainer
+                autoClose={1000}
+                hideProgressBar
+            />
         </div>
      );
 }

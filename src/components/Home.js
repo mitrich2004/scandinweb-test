@@ -14,21 +14,24 @@ const Home = () => {
     const history = useHistory();
 
     const handleDelete = () => { 
-        axios.post('https://juniortest-siarhei-miachkou-api.000webhostapp.com/' + checkedProducts).then((response) => 
+        if (checkedProducts.length > 0)
         {
-            if (response.data.status === 1)
+            axios.post('https://juniortest-siarhei-miachkou-api.000webhostapp.com/' + checkedProducts).then((response) => 
             {
-                toast.success(response.data.msg);
-                setCheckedProducts([]);
-            }
-            else
-            {
-                toast.error(response.data.msg);
-            }
-        })
-        .catch(error => {
-            toast.error(error.message);
-        });
+                if (response.data.status === 1)
+                {
+                    toast.success(response.data.msg);
+                    setCheckedProducts([]);
+                }
+                else
+                {
+                    toast.error(response.data.msg);
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+            });
+        }
     }
 
     useEffect(() => {

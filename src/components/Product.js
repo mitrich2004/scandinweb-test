@@ -14,14 +14,14 @@ const Product = ({product, checkedProducts, setCheckedProducts}) => {
     }
 
     return ( 
-        <div className="product">
-            <input className="delete-checkbox" type="checkbox" onClick={(e) => handleClick(e.target.checked)}></input>
-            <p>{ product.sku }</p>
-            <p>{ product.name }</p>
-            <p>{ product.price + '$' }</p>
-            {product.size && <p>{ 'Size: ' + product.size +'MB' }</p>}
-            {product.weight && <p>{ 'Weight: ' + product.weight +'KG' }</p>}
-            {product.length && <p>{ `Dimensions: ${product.height}x${product.width}x${product.length}`}</p>}
+        <div data-testid={product.id} className="product">
+            <input data-testid='product-checkbox' className="delete-checkbox" type="checkbox" onClick={(e) => handleClick(e.target.checked)}></input>
+            <p data-testid='sku-text'>{ product.sku }</p>
+            <p data-testid='name-text'>{ product.name }</p>
+            <p data-testid='price-text'>{ product.price + '$' }</p>
+            {product.size && <p data-testid='size-text'>{ 'Size: ' + product.size +'MB' }</p>}
+            {product.weight && <p data-testid='weight-text'>{ 'Weight: ' + product.weight +'KG' }</p>}
+            {product.length && <p data-testid='dimensions-text'>{ `Dimensions: ${product.height}x${product.width}x${product.length}`}</p>}
         </div>
      );
 }

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const AddProductNavbar = () => {
     return ( 
         <header className="navbar">
-            <h1>Product Add</h1>
+            <h1 data-testid='header-text'>Product Add</h1>
             <div className="buttons">
-                <button type="submit" form="product_form" className="button-positive">Save</button> 
-                <Link to="/"> <button className="button-negative">Cancel</button> </Link>
+                <button data-testid='save-button' type="submit" form="product_form" className="button-positive">Save</button> 
+                <Link to="/"> <button data-testid='cancel-button' className="button-negative">Cancel</button> </Link>
             </div>
         </header>
      );

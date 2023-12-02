@@ -1,7 +1,7 @@
 const Footer = () => {
     return ( 
         <footer className="footer">
-                <p>Scandinweb Test assigment</p>
+                <p data-testid='footer-text'>Scandiweb Test assignment</p>
         </footer>
      );
 }

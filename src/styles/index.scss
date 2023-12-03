@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import 'variables';
+
+@mixin navbar-footer() {
+  padding: $base-padding;
+  display: flex;
+  align-items: center;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+* {
+  margin: 0px;
+  font-family: "Quicksand";
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  @include navbar-footer();
+  border-bottom: 1px solid $color-gray;
+
+  .buttons { 
+    margin-left: auto;
+  }
+
+  button {
+    margin-left: $base-margin;
+    padding: $base-padding * 0.5;
+    color: $color-white;
+    border: 0px;
+    border-radius: $base-border-radius;
+    cursor: pointer;
+  }
+}
+
+@each $key, $value in $colors
+{
+  .button-#{$key} {
+    background: $value;
+  }
+
+  .button-#{$key}:hover {
+    background: darken($value, 20%);
+  }
+}
+
+.message
+{
+  margin-top: $base-margin auto 0px;
+  text-align: center;
+}
+
+.content {
+  display: grid;
+  max-width: $max-width;
+  margin: 0px auto $base-margin;
+  padding: $base-padding;
+
+  @include sm {
+    grid-template-columns: 100%; 
+  }
+
+  @include md {
+    grid-template-columns: 50% 50%; 
+  }
+
+  @include lg {
+    grid-template-columns: 33% 33% 33%; 
+  }
+
+  @include xl {
+    grid-template-columns: 25% 25% 25% 25%; 
+  }
+}
+
+.product {
+  background-color: $color-whitish;
+  margin: $base-margin;
+  padding-top: $base-padding;
+  padding-bottom: $base-padding * 2;
+  border-radius: $base-border-radius;
+
+  p {
+    margin: $base-margin * 0.5 auto;
+    text-align: center;
+  }
+} 
+
+.delete-checkbox {
+  margin-left: $base-margin * 2;
+}
+
+.create {
+  max-width: $max-width * 0.33;
+  margin: $base-margin auto;
+  text-align: center;
+
+  label {
+    text-align: left;
+    display: block;
+  }
+
+  input, select {
+    width: 100%;
+    padding: $base-padding * 0.5;
+    margin: $base-margin * 0.5 0px;
+    border: 1px solid $color-whitish;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .errorText {
+    text-align: left;
+    color: $color-negative;
+    font-size: 14px;
+    display: block;
+    padding-top: $base-padding * 0.25;
+  }
+}
+
+.footer {
+  @include navbar-footer();
+  border-top: 1px solid $color-gray;
+
+  p {
+    margin: 0px auto;
+  }
+}
